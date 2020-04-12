@@ -1,12 +1,20 @@
 import { Link } from "gatsby"
+import styled from "styled-components"
 import PropTypes from "prop-types"
 import React from "react"
+
+import Logo from "../../assets/logo_b.svg"
+
+const Logotype = styled.img`
+  max-width: 150px;
+  margin: 0;
+`
 
 const Header = ({ siteTitle }) => (
   <header
     style={{
       background: `none`,
-      borderBottom: "1px solid white",
+      borderBottom: "1px solid rgba(255,255,255,0.3)",
       position: `fixed`,
       top: 0,
       left: 0,
@@ -17,7 +25,7 @@ const Header = ({ siteTitle }) => (
     <div
       style={{
         margin: `0 auto`,
-        maxWidth: 960,
+        maxWidth: 1200,
         padding: `1.45rem 1.0875rem`,
       }}
     >
@@ -29,7 +37,7 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}
         >
-          {siteTitle}
+          <Logotype src={Logo} alt="URO-MK logotyp" />
         </Link>
       </h1>
     </div>
