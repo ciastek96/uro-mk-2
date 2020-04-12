@@ -25,7 +25,7 @@ const OpacityMask = styled.div`
   top: 0;
   left: 0;
   z-index: 6;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
 `
 
 const Hero = ({ children }) => (
