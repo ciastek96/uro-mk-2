@@ -1,13 +1,21 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
+import Layout from "../layout/layout"
 import Image from "../components/image"
-import SEO from "../components/seo"
+import Hero from "../components/Hero/Hero"
+import SEO from "../components/SEO/SEO"
+
+import Video from "../assets/video.mp4"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="URO-MK - usługi remontowo ociepleniowe" />
+    <Hero>
+      <video loop muted autoPlay preload="auto">
+        <source src={Video} type="video/mp4" />
+      </video>
+    </Hero>
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
