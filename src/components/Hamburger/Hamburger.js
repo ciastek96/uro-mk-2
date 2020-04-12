@@ -57,7 +57,7 @@ const NavigationWrapper = styled.nav`
   left: ${({ isOpen }) => (isOpen ? "0" : "100%")};
   height: 100vh;
   width: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 1);
   position: fixed;
   /* display: ${({ isOpen }) => (isOpen ? "none" : "block")}; */
   opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
@@ -76,6 +76,7 @@ const StyledList = styled.ul`
 `
 
 const StyledListItem = styled.li`
+  list-style: none;
   padding: 0;
   margin: 0;
 `
