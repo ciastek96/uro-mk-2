@@ -12,19 +12,18 @@ import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { theme } from "../theme/theme"
 
 import Header from "../components/Header/Header"
+import Footer from "../components/Footer/Footer"
 import "./layout.css"
 
 const GlogalStyle = createGlobalStyle`
     body {
       padding: 0;
       margin: 0;
-      color: ${({ theme }) => theme.white};
-      background-color: ${({ theme }) => theme.dark};
+      color: ${({ theme }) => theme.dark};
+      background-color: ${({ theme }) => theme.white};
       font-family: 'Montserrat', sans-serif;
       font-size: 1.6rem;
     }
-
-
 
     html {
       font-size: 62.5%; /* 1rem = 10px; */
@@ -35,7 +34,7 @@ const GlogalStyle = createGlobalStyle`
       line-height: 1.75;
       text-align: justify;
       font-size: ${({ theme }) => theme.fontSize.s};
-      color: ${({ theme }) => theme.grey100};
+      color: ${({ theme }) => theme.dark2};
       word-wrap: break-word;
   }
   `
@@ -62,6 +61,7 @@ const Layout = ({ children }) => {
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
+        <Footer />
       </>
     </ThemeProvider>
   )

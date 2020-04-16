@@ -17,7 +17,7 @@ const StyledWrapper = styled.div`
 `
 
 const StyledInnerWrapper = styled.div`
-  max-width: 1200px;
+  max-width: ${({ theme }) => theme.breakpoints.lg};
   margin: 0 auto;
   display: flex;
   padding: 25px;

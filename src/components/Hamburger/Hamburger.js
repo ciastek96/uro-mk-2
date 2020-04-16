@@ -57,16 +57,15 @@ const NavigationWrapper = styled.nav`
   left: ${({ isOpen }) => (isOpen ? "0" : "100%")};
   height: 100vh;
   width: 100%;
-  background: rgba(0, 0, 0, 1);
+  background: ${({ theme }) => theme.blue};
   position: fixed;
-  /* display: ${({ isOpen }) => (isOpen ? "none" : "block")}; */
   opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
-  transition: all 0.3s ease-in-out;
+  transition: opacity 0.3s, left 0.3s ease-in-out;
 `
 
 const StyledList = styled.ul`
   margin: 0;
-  padding: 20%;
+  padding: 20px;
   height: 100%;
   display: flex;
   flex-direction: column;
