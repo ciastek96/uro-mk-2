@@ -3,7 +3,7 @@ import styled from "styled-components"
 import PropTypes from "prop-types"
 import React from "react"
 
-import Hamburger from "../Hamburger/Hamburger"
+import Navigation from "../Navigation/Navigation"
 import Logo from "../../assets/logo_b.svg"
 
 const StyledWrapper = styled.div`
@@ -41,7 +41,7 @@ const Header = ({ siteTitle }) => (
       <StyledLink to="/">
         <Logotype src={Logo} alt="URO-MK logotyp" />
       </StyledLink>
-      <Hamburger />
+      <Navigation />
     </StyledInnerWrapper>
   </StyledWrapper>
 )

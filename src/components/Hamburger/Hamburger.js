@@ -1,5 +1,4 @@
-import React, { useState } from "react"
-import { Link } from "gatsby"
+import React from "react"
 import styled from "styled-components"
 
 const StyledWrapper = styled.button`
@@ -52,67 +51,16 @@ const HamburgerInner = styled.span`
   }
 `
 
-const NavigationWrapper = styled.nav`
-  top: 0;
-  left: ${({ isOpen }) => (isOpen ? "0" : "100%")};
-  height: 100vh;
-  width: 100%;
-  background: ${({ theme }) => theme.blue};
-  position: fixed;
-  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
-  transition: opacity 0.3s, left 0.3s ease-in-out;
-`
-
-const StyledList = styled.ul`
-  margin: 0;
-  padding: 20px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-`
-
-const StyledListItem = styled.li`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-`
-
-const StyledLink = styled(Link)`
-  color: white;
-  text-decoration: none;
-  padding: 25px;
-`
-
-const Hamburger = () => {
-  const [isOpen, toggleOpen] = useState(false)
+const Hamburger = ({ isOpen }) => {
+  // const [isOpen, toggleOpen] = useState(false)
 
   return (
-    <>
-      <StyledWrapper onClick={() => toggleOpen(!isOpen)}>
-        <HamburgerBox>
-          <HamburgerInner isOpen={isOpen} />
-        </HamburgerBox>
-      </StyledWrapper>
-      <NavigationWrapper isOpen={isOpen}>
-        <StyledList>
-          <StyledListItem>
-            <StyledLink to="/">O nas</StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink to="/oferta">Oferta</StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink to="/realizacje">Realizacje</StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink to="/kontakt">Kontakt</StyledLink>
-          </StyledListItem>
-        </StyledList>
-      </NavigationWrapper>
-    </>
+    // <StyledWrapper onClick={() => toggleOpen(!isOpen)}>
+    <StyledWrapper>
+      <HamburgerBox>
+        <HamburgerInner isOpen={isOpen} />
+      </HamburgerBox>
+    </StyledWrapper>
   )
 }
 
