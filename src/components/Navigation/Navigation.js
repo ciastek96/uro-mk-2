@@ -56,7 +56,7 @@ const HamburgerWrapper = styled.span`
 
 class Navigation extends Component {
   state = {
-    isMobile: true,
+    isMobile: false,
     isMenuVisible: false,
   }
 
@@ -106,6 +106,9 @@ class Navigation extends Component {
             </StyledListItem>
             <StyledListItem>
               <StyledLink to="/realizacje">Realizacje</StyledLink>
+            </StyledListItem>
+            <StyledListItem>
+              <StyledLink to="/aktualnosci">Aktualności</StyledLink>
             </StyledListItem>
             <StyledListItem>
               <StyledLink to="/kontakt">Kontakt</StyledLink>
