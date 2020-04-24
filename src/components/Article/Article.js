@@ -57,6 +57,8 @@ const StyledBg = styled.div`
 `
 
 const StyledDivider = styled.div`
+  display: none;
+
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     display: block;
     position: absolute;

@@ -1,6 +1,6 @@
-import React from "react"
+import React, { Component } from "react"
 import { Link } from "gatsby"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import PropTypes from "prop-types"
 
 import Navigation from "../Navigation/Navigation"
@@ -14,6 +14,17 @@ const StyledWrapper = styled.div`
   left: 0;
   width: 100%;
   z-index: 100;
+  transition: all 0.35s ease-in-out;
+  padding: 10px 0;
+
+  ${({ isScrolled }) =>
+    isScrolled &&
+    css`
+      transition: all 0.35s ease-in-out;
+      background: ${({ theme }) => theme.dark2};
+      border-bottom: 1px solid rgba(255, 255, 255, 0);
+      padding: 0;
+    `}
 `
 
 const StyledInnerWrapper = styled.div`
@@ -35,17 +46,45 @@ const Logotype = styled.img`
   z-index: 10;
 `
 
-const Header = ({ siteTitle }) => (
-  <StyledWrapper>
-    <StyledInnerWrapper>
-      <StyledLink to="/">
-        <Logotype src={Logo} alt="URO-MK logotyp" />
-      </StyledLink>
-      <Navigation />
-    </StyledInnerWrapper>
-  </StyledWrapper>
-)
+class Header extends Component {
+  state = {
+    isScrolled: false,
+  }
 
+  componentDidMount() {
+    this.updateScrollPosition()
+    window.addEventListener("scroll", this.updateScrollPosition)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.updateScrollPosition)
+  }
+
+  updateScrollPosition = () => {
+    window.scrollY > 120
+      ? this.setState({
+          isScrolled: true,
+        })
+      : this.setState({
+          isScrolled: false,
+        })
+  }
+
+  render() {
+    const { isScrolled } = this.state
+    const { siteTitle } = this.props
+    return (
+      <StyledWrapper isScrolled={isScrolled}>
+        <StyledInnerWrapper>
+          <StyledLink to="/">
+            <Logotype src={Logo} alt="URO-MK logotyp" />
+          </StyledLink>
+          <Navigation />
+        </StyledInnerWrapper>
+      </StyledWrapper>
+    )
+  }
+}
 Header.propTypes = {
   siteTitle: PropTypes.string,
 }
