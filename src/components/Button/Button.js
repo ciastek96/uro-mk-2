@@ -9,6 +9,11 @@ const Button = styled.button`
   border: none;
   color: ${({ theme }) => theme.white};
   text-transform: uppercase;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: 0 1px 30px -10px hsla(0, 0%, 0%, 0.15); */
   font-size: ${({ theme }) => theme.fontSize.xs};
   cursor: pointer;
 
