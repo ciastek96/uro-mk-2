@@ -6,72 +6,56 @@ import Button from "../Button/Button"
 import MaskImg from "../../assets/articlePhotoMask.svg"
 
 const StyledWrapper = styled.div`
+  width: 100%;
+  min-height: 580px;
+  background-color: ${({ theme }) => theme.grey100};
+  border: 1px solid ${({ theme }) => theme.grey400};
+  border-radius: 5px;
+  margin: 35px auto;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
 
-  ${({ normal }) =>
-    normal &&
-    css`
-      max-width: ${({ theme }) => theme.breakpoints.lg};
-      min-height: 580px;
-      border-radius: 5px;
-      background-color: ${({ theme }) => theme.grey100};
-      margin: 35px auto;
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      grid-template-columns: 1fr;
-      overflow: hidden;
-      border: 1px solid rgb(234, 237, 242);
+  ${({ type }) => {
+    if (type === "big") {
+      return css`
+        margin-top: 125px;
+        max-width: 100%;
+        min-height: 600px;
+        background: ${({ theme }) => theme.grey100};
+        border-radius: 0;
+        border-left: none;
 
-      @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-        grid-template-rows: 1fr;
-        grid-template-columns: 55% 45%;
-        min-height: 380px;
-      }
-    `}
-
-  ${({ big }) =>
-    big &&
-    css`
-      max-width: ${({ theme }) => theme.breakpoints.lg};
-      min-height: 580px;
-      border-radius: 5px;
-      background-color: ${({ theme }) => theme.grey100};
-      margin: 35px auto;
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      grid-template-columns: 1fr;
-      overflow: hidden;
-      border: 1px solid rgb(234, 237, 242);
-      margin-top: 125px;
-      max-width: 100%;
-      min-height: 600px;
-      background: ${({ theme }) => theme.grey100};
-      border-radius: 0;
-      grid-template-rows: 1fr 1fr;
-      grid-template-columns: 1fr;
-
-      @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-        grid-template-rows: 1fr;
-        grid-template-columns: 50% 50%;
-        min-height: 780px;
-      }
-    `}
-
-  ${({ small }) =>
-    small &&
-    css`
-      max-width: ${({ theme }) => theme.breakpoints.lg};
-      min-height: 480px;
-      border-radius: 5px;
-      background-color: ${({ theme }) => theme.grey100};
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      grid-template-columns: 1fr;
-      overflow: hidden;
-      border: 1px solid rgb(234, 237, 242);
-    `}
+        @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+          grid-template-rows: 1fr;
+          grid-template-columns: 55% 45%;
+          min-height: 780px;
+        }
+      `
+    } else if (type === "small") {
+      return css`
+        margin: 0;
+        min-height: 480px;
+        background-color: ${({ theme }) => theme.white};
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+      `
+    } else {
+      return css`
+        @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+          max-width: ${({ theme }) => theme.breakpoints.lg};
+          grid-template-rows: 1fr;
+          grid-template-columns: 55% 45%;
+          min-height: 380px;
+        }
+      `
+    }
+  }}
 `
 
 const StyledImage = styled.div`
+  width: 100%;
   height: 100%;
   background-position: center;
   background-size: cover;
@@ -148,27 +132,17 @@ const StyledButton = styled(Button)`
   right: 20px;
 `
 
-const Article = ({
-  slug,
-  image,
-  title,
-  author,
-  description,
-  date,
-  big,
-  small,
-  normal,
-}) => (
-  <StyledWrapper big={big} small={small} normal={normal}>
+const Article = ({ slug, image, title, author, description, date, type }) => (
+  <StyledWrapper type={type}>
     <StyledImage as={Link} to={`/BlogPostTemplate`}>
       <StyledBg image={image} />
-      {small ? null : <StyledDivider />}
+      {type !== "small" && <StyledDivider />}
     </StyledImage>
     <StyledContainer>
-      {small ? null : <StyledDate>{date} </StyledDate>}
+      {type !== "small" && <StyledDate>{date}</StyledDate>}
       <StyledTitle>{title}</StyledTitle>
       <p>{description}</p>
-      {big ? null : (
+      {type !== "big" && (
         <StyledButton as={Link} to={`/BlogPostTemplate`}>
           Przejdź
         </StyledButton>

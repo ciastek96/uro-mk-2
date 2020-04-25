@@ -37,7 +37,7 @@ const BlogPostTemplate = () => (
   <Layout>
     <SEO title={posts[0].title} />
     <Article
-      big
+      type="big"
       key={posts[0].id}
       image={posts[0].image}
       title={posts[0].title}

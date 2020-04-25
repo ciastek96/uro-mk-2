@@ -57,7 +57,7 @@ const Aktualnosci = () => (
       <h1>Aktualności</h1>
       {posts.map(item => (
         <Article
-          normal
+          type="normal"
           key={item.id}
           image={item.image}
           title={item.title}

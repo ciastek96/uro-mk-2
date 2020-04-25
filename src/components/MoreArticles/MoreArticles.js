@@ -48,12 +48,12 @@ const posts = [
 const StyledWrapper = styled.div`
   width: 100%;
   min-height: 580px;
-  border-radius: 5px;
   background-color: ${({ theme }) => theme.grey100};
   box-shadow: 0 1px 30px -10px hsla(0, 0%, 0%, 0.05);
   margin: 0 auto;
   padding: 35px 25px;
   text-align: center;
+  border: 1px solid ${({ theme }) => theme.grey400};
 
   @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
   }
@@ -77,7 +77,7 @@ const MoreArticles = () => (
     <StyledInnerWrapper>
       {posts.map(post => (
         <Article
-          small
+          type="small"
           key={post.id}
           image={post.image}
           title={post.title}

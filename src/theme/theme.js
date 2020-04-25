@@ -11,6 +11,7 @@ export const theme = {
   grey100: "hsl(0, 0%, 96%)",
   grey200: "hsl(0, 0%, 90%)",
   grey300: "hsl(0, 0%, 82%)",
+  grey400: "rgb(234, 237, 242)",
   fontSize: {
     xxs: "1rem",
     xs: "1.2rem",
