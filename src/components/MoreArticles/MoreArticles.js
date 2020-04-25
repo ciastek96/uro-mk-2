@@ -1,15 +1,11 @@
 import React from "react"
-import PropTypes from "prop-types"
+import styled from "styled-components"
 
-import Layout from "../layout/layout"
-import Hero from "../components/Hero/Hero"
-import Article from "../components/Article/Article"
-import ContentContainer from "../components/ContentContainter/ContentContainer"
-import SEO from "../components/SEO/SEO"
+import Article from "../Article/Article"
 
-import Photo1 from "../images/1.jpg"
-import Photo2 from "../images/2.jpg"
-import Photo3 from "../images/3.jpg"
+import Photo1 from "../../images/1.jpg"
+import Photo2 from "../../images/2.jpg"
+import Photo3 from "../../images/3.jpg"
 
 const posts = [
   {
@@ -49,33 +45,50 @@ const posts = [
   },
 ]
 
-const Aktualnosci = () => (
-  <Layout>
-    <SEO title="Aktualności" />
-    <Hero />
-    <ContentContainer>
-      <h1>Aktualności</h1>
-      {posts.map(item => (
+const StyledWrapper = styled.div`
+  width: 100%;
+  min-height: 580px;
+  border-radius: 5px;
+  background-color: ${({ theme }) => theme.grey100};
+  box-shadow: 0 1px 30px -10px hsla(0, 0%, 0%, 0.05);
+  margin: 0 auto;
+  padding: 35px 25px;
+  text-align: center;
+
+  @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+  }
+`
+const StyledInnerWrapper = styled.div`
+  max-width: ${({ theme }) => theme.breakpoints.lg};
+  margin: 35px auto;
+  display: flex;
+  flex-direction: column;
+
+  @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 35px;
+  }
+`
+
+const MoreArticles = () => (
+  <StyledWrapper>
+    <h1>Zobacz więcej postów</h1>
+    <StyledInnerWrapper>
+      {posts.map(post => (
         <Article
-          normal
-          key={item.id}
-          image={item.image}
-          title={item.title}
-          author={item.author}
-          date={item.date}
-          description={item.description}
+          small
+          key={post.id}
+          image={post.image}
+          title={post.title}
+          date={post.date}
+          author={post.author}
+          description={post.description}
+          content={post.content}
         />
       ))}
-    </ContentContainer>
-  </Layout>
+    </StyledInnerWrapper>
+  </StyledWrapper>
 )
 
-Aktualnosci.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Aktualnosci.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Aktualnosci
+export default MoreArticles

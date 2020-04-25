@@ -18,7 +18,7 @@ const HamburgerBox = styled.span`
   position: relative;
 `
 const HamburgerInner = styled.span`
-  width: 80%;
+  width: 18px;
   height: 2px;
   background-color: ${({ isOpen }) => (isOpen ? "transparent" : "white")};
   transition: all 0.15s ease-in;
@@ -31,7 +31,7 @@ const HamburgerInner = styled.span`
   ::after,
   ::before {
     content: "";
-    width: 120%;
+    width: 24px;
     height: 2px;
     position: absolute;
     background: white;

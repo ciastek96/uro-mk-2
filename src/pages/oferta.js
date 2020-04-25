@@ -1,8 +1,7 @@
 import React from "react"
-import styled from "styled-components"
+import PropTypes from "prop-types"
 
 import Layout from "../layout/layout"
-import Image from "../components/image"
 import Hero from "../components/Hero/Hero"
 import SEO from "../components/SEO/SEO"
 
@@ -13,5 +12,13 @@ const Oferta = () => (
     <h1>Oferta</h1>
   </Layout>
 )
+
+Oferta.propTypes = {
+  siteTitle: PropTypes.string,
+}
+
+Oferta.defaultProps = {
+  siteTitle: ``,
+}
 
 export default Oferta

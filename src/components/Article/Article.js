@@ -1,27 +1,74 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 import Button from "../Button/Button"
-import MaskImg from "../../assets/clip-path.svg"
+import MaskImg from "../../assets/articlePhotoMask.svg"
 
 const StyledWrapper = styled.div`
-  max-width: ${({ theme }) => theme.breakpoints.lg};
-  min-height: 580px;
-  border-radius: 5px;
-  background-color: ${({ theme }) => theme.grey100};
-  box-shadow: 0 1px 30px -10px hsla(0, 0%, 0%, 0.05);
-  margin: 35px auto;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr;
-  overflow: hidden;
 
-  @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-    grid-template-rows: 1fr;
-    grid-template-columns: 55% 45%;
-    min-height: 380px;
-  }
+  ${({ normal }) =>
+    normal &&
+    css`
+      max-width: ${({ theme }) => theme.breakpoints.lg};
+      min-height: 580px;
+      border-radius: 5px;
+      background-color: ${({ theme }) => theme.grey100};
+      margin: 35px auto;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr;
+      overflow: hidden;
+      border: 1px solid rgb(234, 237, 242);
+
+      @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+        grid-template-rows: 1fr;
+        grid-template-columns: 55% 45%;
+        min-height: 380px;
+      }
+    `}
+
+  ${({ big }) =>
+    big &&
+    css`
+      max-width: ${({ theme }) => theme.breakpoints.lg};
+      min-height: 580px;
+      border-radius: 5px;
+      background-color: ${({ theme }) => theme.grey100};
+      margin: 35px auto;
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr;
+      overflow: hidden;
+      border: 1px solid rgb(234, 237, 242);
+      margin-top: 125px;
+      max-width: 100%;
+      min-height: 600px;
+      background: ${({ theme }) => theme.grey100};
+      border-radius: 0;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr;
+
+      @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+        grid-template-rows: 1fr;
+        grid-template-columns: 50% 50%;
+        min-height: 780px;
+      }
+    `}
+
+  ${({ small }) =>
+    small &&
+    css`
+      max-width: ${({ theme }) => theme.breakpoints.lg};
+      min-height: 480px;
+      border-radius: 5px;
+      background-color: ${({ theme }) => theme.grey100};
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr;
+      overflow: hidden;
+      border: 1px solid rgb(234, 237, 242);
+    `}
 `
 
 const StyledImage = styled.div`
@@ -63,7 +110,7 @@ const StyledDivider = styled.div`
     display: block;
     position: absolute;
     top: 0;
-    right: -1px;
+    right: -2px;
     height: 100%;
     width: 5vw;
     max-width: 72px;
@@ -78,10 +125,11 @@ const StyledContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   position: relative;
+  padding: 25px 25px 80px 25px;
 
-  @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+  /* @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 35px 35px 80px 50px;
-  }
+  } */
 `
 
 const StyledDate = styled.p`
@@ -100,19 +148,31 @@ const StyledButton = styled(Button)`
   right: 20px;
 `
 
-const Article = ({ slug, image, title, author, description, date }) => (
-  <StyledWrapper>
-    <StyledImage as={Link} to={`/${slug}`}>
+const Article = ({
+  slug,
+  image,
+  title,
+  author,
+  description,
+  date,
+  big,
+  small,
+  normal,
+}) => (
+  <StyledWrapper big={big} small={small} normal={normal}>
+    <StyledImage as={Link} to={`/BlogPostTemplate`}>
       <StyledBg image={image} />
-      <StyledDivider />
+      {small ? null : <StyledDivider />}
     </StyledImage>
     <StyledContainer>
-      <StyledDate>{date} </StyledDate>
+      {small ? null : <StyledDate>{date} </StyledDate>}
       <StyledTitle>{title}</StyledTitle>
       <p>{description}</p>
-      <StyledButton as={Link} to={`/aktualnosci/${slug}`}>
-        Przejdź
-      </StyledButton>
+      {big ? null : (
+        <StyledButton as={Link} to={`/BlogPostTemplate`}>
+          Przejdź
+        </StyledButton>
+      )}
     </StyledContainer>
   </StyledWrapper>
 )

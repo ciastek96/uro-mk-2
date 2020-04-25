@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import { Link } from "gatsby"
 import styled, { css } from "styled-components"
-import PropTypes from "prop-types"
 
 import Navigation from "../Navigation/Navigation"
 import Logo from "../../assets/logo_b.svg"
@@ -31,7 +30,7 @@ const StyledInnerWrapper = styled.div`
   max-width: ${({ theme }) => theme.breakpoints.lg};
   margin: 0 auto;
   display: flex;
-  padding: 25px;
+  padding: 15px 5px 15px 20px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -72,7 +71,6 @@ class Header extends Component {
 
   render() {
     const { isScrolled } = this.state
-    const { siteTitle } = this.props
     return (
       <StyledWrapper isScrolled={isScrolled}>
         <StyledInnerWrapper>
@@ -84,13 +82,6 @@ class Header extends Component {
       </StyledWrapper>
     )
   }
-}
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
 }
 
 export default Header

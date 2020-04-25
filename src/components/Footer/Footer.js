@@ -3,6 +3,9 @@ import styled from "styled-components"
 
 const StyledWrapper = styled.div`
   width: 100%;
+  height: 450px;
+  background: ${({ theme }) => theme.blue};
+  color: ${({ theme }) => theme.white};
 `
 
 const StyledInnerWrapper = styled.div`
@@ -33,7 +36,11 @@ const StyledItem = styled.div`
 const Footer = () => (
   <StyledWrapper>
     <StyledInnerWrapper>
-      <StyledItem></StyledItem>
+      <StyledItem>
+        © {new Date().getFullYear()}, Built with
+        {` `}
+        <a href="https://www.gatsbyjs.org">Gatsby</a>
+      </StyledItem>
       <StyledItem></StyledItem>
       <StyledItem></StyledItem>
       <StyledItem></StyledItem>
