@@ -20,7 +20,7 @@ const GlogalStyle = createGlobalStyle`
       padding: 0;
       margin: 0;
       color: ${({ theme }) => theme.dark};
-      background-color: ${({ theme }) => theme.white};
+      background-color: ${({ theme }) => theme.dark2};
       font-family: 'Montserrat', sans-serif;
       font-size: 1.6rem;
     }
@@ -28,7 +28,6 @@ const GlogalStyle = createGlobalStyle`
     html {
       font-size: 62.5%; /* 1rem = 10px; */
     }
-
     p,
     blockquote {
       line-height: 1.75;

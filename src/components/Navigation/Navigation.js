@@ -46,6 +46,7 @@ const StyledListItem = styled.li`
 
 const StyledLink = styled(Link)`
   color: white;
+  font-weight: 400;
   text-decoration: none;
   padding: 25px;
 `

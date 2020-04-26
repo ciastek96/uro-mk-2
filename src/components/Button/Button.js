@@ -22,6 +22,12 @@ const Button = styled.button`
     css`
       background-color: ${({ theme }) => theme.blue};
     `}
+
+  ${({ dark2 }) =>
+    dark2 &&
+    css`
+      background-color: ${({ theme }) => theme.dark2};
+    `}
 `
 
 export default Button

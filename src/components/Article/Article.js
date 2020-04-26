@@ -20,12 +20,12 @@ const StyledWrapper = styled.div`
   ${({ type }) => {
     if (type === "big") {
       return css`
-        margin-top: 125px;
         max-width: 100%;
         min-height: 600px;
         background: ${({ theme }) => theme.grey100};
         border-radius: 0;
         border-left: none;
+        margin: 100px auto 0;
 
         @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
           grid-template-rows: 1fr;
@@ -38,8 +38,6 @@ const StyledWrapper = styled.div`
         margin: 0;
         min-height: 480px;
         background-color: ${({ theme }) => theme.white};
-        grid-template-rows: 1fr 1fr;
-        grid-template-columns: 1fr;
       `
     } else {
       return css`

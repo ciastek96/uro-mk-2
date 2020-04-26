@@ -51,9 +51,9 @@ const StyledWrapper = styled.div`
   background-color: ${({ theme }) => theme.grey100};
   box-shadow: 0 1px 30px -10px hsla(0, 0%, 0%, 0.05);
   margin: 0 auto;
-  padding: 35px 25px;
+  padding: 35px 20px;
   text-align: center;
-  border: 1px solid ${({ theme }) => theme.grey400};
+  /* border: 1px solid ${({ theme }) => theme.grey400}; */
 
   @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
   }
@@ -64,10 +64,23 @@ const StyledInnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
+  & > div {
+    margin-top: 25px;
+  }
+
+  & > div :first-child {
+    margin-top: 0;
+  }
+
   @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     grid-gap: 35px;
+
+    & > div {
+      margin-top: 0;
+    }
   }
 `
 

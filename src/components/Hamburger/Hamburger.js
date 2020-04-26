@@ -34,7 +34,7 @@ const HamburgerInner = styled.span`
     width: 24px;
     height: 2px;
     position: absolute;
-    background: white;
+    background-color: white;
     right: 0;
     transition: transform 0.25s linear;
   }

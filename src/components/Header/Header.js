@@ -7,7 +7,8 @@ import Logo from "../../assets/logo_b.svg"
 
 const StyledWrapper = styled.div`
   background: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid ${({ theme }) => theme.grey400}; */
   position: fixed;
   top: 0;
   left: 0;
@@ -60,7 +61,7 @@ class Header extends Component {
   }
 
   updateScrollPosition = () => {
-    window.scrollY > 120
+    window.scrollY > 60
       ? this.setState({
           isScrolled: true,
         })

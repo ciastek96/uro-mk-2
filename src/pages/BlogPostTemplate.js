@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import Layout from "../layout/layout"
 import Article from "../components/Article/Article"
+import ContactWrapper from "../components/ContactWrapper/ContactWrapper"
 import MoreArticles from "../components/MoreArticles/MoreArticles"
 import ContentContainer from "../components/ContentContainter/ContentContainer"
 import SEO from "../components/SEO/SEO"
@@ -54,6 +55,7 @@ const BlogPostTemplate = () => (
       </StyledWrapper>
     </ContentContainer>
     <MoreArticles />
+    <ContactWrapper />
   </Layout>
 )
 
