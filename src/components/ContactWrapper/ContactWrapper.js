@@ -33,7 +33,7 @@ const StyledWrapper = styled.div`
 const ContactWrapper = ({ children }) => (
   <StyledWrapper>
     <h1>Masz pytania?</h1>
-    <Button dark2 as={Link} to="/kontakt">
+    <Button dark2="1" as={Link} to="/kontakt">
       Napisz do nas
     </Button>
     <Mask color="grey100" />

@@ -84,9 +84,9 @@ const StyledInnerWrapper = styled.div`
   }
 `
 
-const MoreArticles = () => (
+const MoreArticles = ({ title }) => (
   <StyledWrapper>
-    <h1>Zobacz więcej postów</h1>
+    {title && <h1>{title}</h1>}
     <StyledInnerWrapper>
       {posts.map(post => (
         <Article

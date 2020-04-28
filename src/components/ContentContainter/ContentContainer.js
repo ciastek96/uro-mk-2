@@ -2,8 +2,10 @@ import React from "react"
 import styled from "styled-components"
 
 const StyledWrapper = styled.div`
-  padding: 20px;
+  padding: 40px 25px;
   background: ${({ theme }) => theme.white};
+  margin: 0 auto;
+  text-align: center;
 `
 
 const ContentContainer = ({ children }) => (

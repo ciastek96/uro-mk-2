@@ -26,6 +26,7 @@ const StyledWrapper = styled.div`
         border-radius: 0;
         border-left: none;
         margin: 100px auto 0;
+        border-top: 0;
 
         @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
           grid-template-rows: 1fr;

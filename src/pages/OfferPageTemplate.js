@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import Layout from "../layout/layout"
 import Article from "../components/Article/Article"
+import AsideMenu from "../components/AsideMenu/AsideMenu"
 import ContactWrapper from "../components/ContactWrapper/ContactWrapper"
 import MoreArticles from "../components/MoreArticles/MoreArticles"
 import ContentContainer from "../components/ContentContainter/ContentContainer"
@@ -26,15 +27,29 @@ const posts = [
 ]
 
 const StyledWrapper = styled.div`
+  width: 100%;
   margin: 0 auto;
-  max-width: 100%;
+  display: flex;
+  flex-direction: column;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    max-width: ${({ theme }) => theme.breakpoints.md};
+  @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+    max-width: ${({ theme }) => theme.breakpoints.lg};
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 1fr;
   }
 `
 
-const BlogPostTemplate = () => (
+const StyledInnerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-left: 20px;
+  }
+`
+
+const OfferPageTemplate = () => (
   <Layout>
     <SEO title={posts[0].title} />
     <Article
@@ -48,10 +63,15 @@ const BlogPostTemplate = () => (
     />
     <ContentContainer>
       <StyledWrapper>
-        <h1>{posts[0].title}</h1>
-        <p>{posts[0].content}</p>
-        <h1>{posts[0].title}</h1>
-        <p>{posts[0].content}</p>
+        <div>
+          <AsideMenu />
+        </div>
+        <StyledInnerWrapper>
+          <h1>{posts[0].title}</h1>
+          <p>{posts[0].content}</p>
+          <h1>{posts[0].title}</h1>
+          <p>{posts[0].content}</p>
+        </StyledInnerWrapper>
       </StyledWrapper>
     </ContentContainer>
     <MoreArticles title="Zobacz więcej postów" />
@@ -59,4 +79,4 @@ const BlogPostTemplate = () => (
   </Layout>
 )
 
-export default BlogPostTemplate
+export default OfferPageTemplate

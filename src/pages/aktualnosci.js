@@ -5,6 +5,7 @@ import Layout from "../layout/layout"
 import Hero from "../components/Hero/Hero"
 import Article from "../components/Article/Article"
 import ContentContainer from "../components/ContentContainter/ContentContainer"
+import ContactWrapper from "../components/ContactWrapper/ContactWrapper"
 import SEO from "../components/SEO/SEO"
 
 import Photo1 from "../images/1.jpg"
@@ -67,6 +68,7 @@ const Aktualnosci = () => (
         />
       ))}
     </ContentContainer>
+    <ContactWrapper />
   </Layout>
 )
 
