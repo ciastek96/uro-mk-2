@@ -11,6 +11,20 @@ module.exports = {
     favicon: "src/assets/favicon.svg",
   },
   plugins: [
+    {
+      resolve: "gatsby-source-sanity",
+      options: {
+        projectId: "cpw7vwgj",
+        dataset: "production ",
+
+        // a token with read permissions is required
+        // if you have a private dataset
+        token: `sk3p8cm3Fln8sFzxT3tvoEg3BCJKV6XeRAZQ2DkDWMMggO5tDTkppU7k0UwAjBDPIpuGJilvedl0mKmqF8HkqSbICPlbNE4WcQUTd8x9gyLblb8MKLO3SogrN1P4LQz81l5PCACccF1PMlN5buxdO1puAYJcJ4ILPBLNJmFvDlS7nEMJDutC`,
+        // If the Sanity GraphQL API was deployed using `--tag <name>`,
+        // use `graphqlTag` to specify the tag name. Defaults to `default`.
+        graphqlTag: "default",
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
