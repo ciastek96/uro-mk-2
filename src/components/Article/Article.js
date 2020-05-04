@@ -131,7 +131,7 @@ const StyledButton = styled(Button)`
   right: 20px;
 `
 
-const Article = ({ slug, image, title, author, description, date, type }) => (
+const Article = ({ slug, image, title, description, date, type }) => (
   <StyledWrapper type={type}>
     <StyledImage as={Link} to={`/BlogPostTemplate`}>
       <StyledBg image={image} />
@@ -142,7 +142,7 @@ const Article = ({ slug, image, title, author, description, date, type }) => (
       <StyledTitle>{title}</StyledTitle>
       <p>{description}</p>
       {type !== "big" && (
-        <StyledButton as={Link} to={`/BlogPostTemplate`}>
+        <StyledButton as={Link} to={`/aktualnosci/${slug}`}>
           Przejdź
         </StyledButton>
       )}

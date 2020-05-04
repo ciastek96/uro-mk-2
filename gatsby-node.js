@@ -1,39 +1,52 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
 
-// You can delete this file if you're not using it
+  const result = await graphql(`
+    {
+      allSanityPost(filter: { slug: { current: { ne: null } } }) {
+        edges {
+          node {
+            slug {
+              current
+            }
+          }
+        }
+      }
+      allSanityOffer(filter: { slug: { current: { ne: null } } }) {
+        edges {
+          node {
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
 
-// exports.createPages = ({ graphql, actions }) => {
-//   const { createPages } = actions
-//   blogPostTemplate = path.resolve(`src/templates/blog-post.js`)
-//   return graphql(
-//     `
-//       query blogPostQuery($limit: Int!) {
-//         allSanityPost(limit: $limit) {
-//           edges {
-//             node {
-//               id
-//               slug
-//             }
-//           }
-//         }
-//       }
-//     `,
-//     { limit: 1000 }
-//   ).then(result => {
-//     if (result.errors) {
-//       throw result.errors
-//     }
-//   })
+  if (result.errors) {
+    throw result.errors
+  }
 
-//   result.data.allSanityPost.edges.node.forEach(edge => {
-//     createPages({
-//       path: `/aktualnosci/${edge.slug}`,
-//       component: blogPostTemplate,
-//       context: {},
-//     })
-//   })
-// }
+  const blogPost = result.data.allSanityPost.edges || []
+  blogPost.forEach((edge, index) => {
+    const path = `/aktualnosci/${edge.node.slug.current}`
+
+    createPage({
+      path,
+      component: require.resolve("./src/templates/BlogPostTemplate.js"),
+      context: { slug: edge.node.slug.current },
+    })
+  })
+
+  const offer = result.data.allSanityOffer.edges || []
+  offer.forEach((edge, index) => {
+    const path = `/oferta/${edge.node.slug.current}`
+
+    createPage({
+      path,
+      component: require.resolve("./src/templates/OfferPageTemplate.js"),
+      context: { slug: edge.node.slug.current },
+    })
+  })
+}

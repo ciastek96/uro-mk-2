@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
+import { graphql } from "gatsby"
 
 import Layout from "../layout/layout"
 import Article from "../components/Article/Article"
-import AsideMenu from "../components/AsideMenu/AsideMenu"
 import ContactWrapper from "../components/ContactWrapper/ContactWrapper"
 import MoreArticles from "../components/MoreArticles/MoreArticles"
 import ContentContainer from "../components/ContentContainter/ContentContainer"
@@ -27,51 +27,30 @@ const posts = [
 ]
 
 const StyledWrapper = styled.div`
-  width: 100%;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+  max-width: 100%;
 
-  @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-    max-width: ${({ theme }) => theme.breakpoints.lg};
-    display: grid;
-    grid-template-columns: 30% 70%;
-    grid-template-rows: 1fr;
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    max-width: ${({ theme }) => theme.breakpoints.md};
   }
 `
 
-const StyledInnerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  @media all and (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-left: 20px;
-  }
-`
-
-const OfferPageTemplate = () => (
+const BlogPostTemplate = ({ pageContext, data }) => (
   <Layout>
-    <SEO title={posts[0].title} />
+    <SEO title={data.post.title} />
     <Article
       type="big"
-      key={posts[0].id}
-      image={posts[0].image}
-      title={posts[0].title}
-      author={posts[0].author}
-      date={posts[0].date}
-      description={posts[0].description}
+      image={data.post.background.asset.fluid.src}
+      title={data.post.title}
+      date={data.post._updatedAt}
+      description={data.post.content2}
     />
     <ContentContainer>
       <StyledWrapper>
-        <div>
-          <AsideMenu />
-        </div>
-        <StyledInnerWrapper>
-          <h1>{posts[0].title}</h1>
-          <p>{posts[0].content}</p>
-          <h1>{posts[0].title}</h1>
-          <p>{posts[0].content}</p>
-        </StyledInnerWrapper>
+        <h1>{posts[0].title}</h1>
+        <p>{posts[0].content}</p>
+        <h1>{posts[0].title}</h1>
+        <p>{posts[0].content}</p>
       </StyledWrapper>
     </ContentContainer>
     <MoreArticles title="Zobacz więcej postów" />
@@ -79,4 +58,21 @@ const OfferPageTemplate = () => (
   </Layout>
 )
 
-export default OfferPageTemplate
+export const query = graphql`
+  query fetchPost($slug: String) {
+    post: sanityPost(slug: { current: { eq: $slug } }) {
+      title
+      content2
+      _updatedAt(locale: "PL", formatString: "D MMMM YYYY")
+      background {
+        asset {
+          fluid {
+            src
+          }
+        }
+      }
+    }
+  }
+`
+
+export default BlogPostTemplate
