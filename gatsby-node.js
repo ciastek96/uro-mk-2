@@ -51,7 +51,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   const blogPosts = result.data.allSanityPost.edges
-  const blogPostsPerPage = 2
+  const blogPostsPerPage = 4
   const numPages = Math.ceil(blogPosts.length / blogPostsPerPage)
 
   Array.from({ length: numPages }).forEach((_, i) => {
