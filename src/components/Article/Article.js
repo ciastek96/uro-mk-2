@@ -133,7 +133,7 @@ const StyledButton = styled(Button)`
 
 const Article = ({ slug, image, title, description, date, type }) => (
   <StyledWrapper type={type}>
-    <StyledImage as={Link} to={`/BlogPostTemplate`}>
+    <StyledImage as={Link} to={`/aktualnosci/${slug}`}>
       <StyledBg image={image} />
       {type !== "small" && <StyledDivider />}
     </StyledImage>

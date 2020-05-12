@@ -20,8 +20,7 @@ module.exports = {
       options: {
         projectId: "cpw7vwgj",
         dataset: "production",
-        token: `sk3p8cm3Fln8sFzxT3tvoEg3BCJKV6XeRAZQ2DkDWMMggO5tDTkppU7k0UwAjBDPIpuGJilvedl0mKmqF8HkqSbICPlbNE4WcQUTd8x9gyLblb8MKLO3SogrN1P4LQz81l5PCACccF1PMlN5buxdO1puAYJcJ4ILPBLNJmFvDlS7nEMJDutC`,
-        graphqlTag: "default",
+        token: `skdjqYP1AHjQ7aT9R79r0yTSBEnC3LkN2CJLGhC8sthz3xzNI8P9KQiifnjucU5alvMUXKaCigNwRWBUUpswI2TGWk27iUZqNlKnTT6Fk2pzwECMTrXwTMjUqQvo8ncaTsy5uCPlTA6qtCHCunYZCKgpaH3GUfSGZdRKyt7fooMgVQ1EhZRP`,
       },
     },
     `gatsby-plugin-react-helmet`,

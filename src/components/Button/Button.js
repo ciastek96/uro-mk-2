@@ -6,6 +6,7 @@ const Button = styled.button`
   border-radius: 5px;
   width: 150px;
   height: 45px;
+  margin: 5px;
   border: none;
   color: ${({ theme }) => theme.white};
   text-transform: uppercase;

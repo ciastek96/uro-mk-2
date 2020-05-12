@@ -29,7 +29,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const blogPost = result.data.allSanityPost.edges || []
-  blogPost.forEach((edge, index) => {
+  blogPost.forEach(edge => {
     const path = `/aktualnosci/${edge.node.slug.current}`
 
     createPage({
@@ -40,13 +40,31 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   const offer = result.data.allSanityOffer.edges || []
-  offer.forEach((edge, index) => {
+  offer.forEach(edge => {
     const path = `/oferta/${edge.node.slug.current}`
 
     createPage({
       path,
       component: require.resolve("./src/templates/OfferPageTemplate.js"),
       context: { slug: edge.node.slug.current },
+    })
+  })
+
+  const blogPosts = result.data.allSanityPost.edges
+  const blogPostsPerPage = 2
+  const numPages = Math.ceil(blogPosts.length / blogPostsPerPage)
+
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/aktualnosci` : `/aktualnosci/${i + 1}`,
+      component: require.resolve("./src/templates/BlogPostListTemplate.js"),
+      context: {
+        numPages: numPages,
+        limit: blogPostsPerPage,
+        skip: i * blogPostsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
     })
   })
 }
