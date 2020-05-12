@@ -19,7 +19,7 @@ const StyledWrapper = styled.div`
   }
 `
 
-const BlogPostTemplate = ({ pageContext, data }) => (
+const BlogPostTemplate = ({ data }) => (
   <Layout>
     <SEO title={data.post.title} />
     <Article
@@ -34,7 +34,10 @@ const BlogPostTemplate = ({ pageContext, data }) => (
         <StyledBlockContent input={data.post._rawContent} />
       </StyledWrapper>
     </ContentContainer>
-    <MoreArticles title="Zobacz więcej postów" />
+    <MoreArticles
+      title="Zobacz więcej postów"
+      currentArticle={data.post.slug.current}
+    />
     <ContactWrapper />
   </Layout>
 )
@@ -43,6 +46,9 @@ export const query = graphql`
   query fetchPost($slug: String) {
     post: sanityPost(slug: { current: { eq: $slug } }) {
       title
+      slug {
+        current
+      }
       content2
       _rawContent(resolveReferences: { maxDepth: 2 })
       _updatedAt(locale: "PL", formatString: "D MMMM YYYY")

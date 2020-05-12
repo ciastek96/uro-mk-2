@@ -35,6 +35,7 @@ const GlogalStyle = createGlobalStyle`
       font-size: ${({ theme }) => theme.fontSize.s};
       color: ${({ theme }) => theme.dark2};
       word-wrap: break-word;
+      word-break: break-word;
   }
   `
 
