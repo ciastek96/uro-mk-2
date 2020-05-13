@@ -39,7 +39,7 @@ const OfferPageTemplate = ({ pageContext, data }) => (
     <SEO title={data.offer.title} />
     <Article
       type="big"
-      image={data.offer.background.asset.fluid.src}
+      image={data.offer.background.asset.fluid}
       title={data.offer.title}
       date={data.offer._updatedAt}
     />
@@ -68,8 +68,8 @@ export const query = graphql`
       id
       background {
         asset {
-          fluid {
-            src
+          fluid(maxWidth: 2560) {
+            ...GatsbySanityImageFluid
           }
         }
       }
