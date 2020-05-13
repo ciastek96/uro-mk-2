@@ -62,7 +62,7 @@ const MoreArticles = ({ title }) => {
               background {
                 asset {
                   fluid(maxWidth: 500) {
-                    src
+                    ...GatsbySanityImageFluid
                   }
                 }
               }
@@ -82,7 +82,7 @@ const MoreArticles = ({ title }) => {
           <Article
             type="small"
             key={i.node.id}
-            image={i.node.background.asset.fluid.src}
+            image={i.node.background.asset.fluid}
             title={i.node.title}
             slug={i.node.slug.current}
             description={i.node.content2}

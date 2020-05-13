@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled, { css } from "styled-components"
+import BackgroundImage from "gatsby-background-image"
 
 import Button from "../Button/Button"
 import MaskImg from "../../assets/articlePhotoMask.svg"
@@ -61,15 +62,15 @@ const StyledImage = styled.div`
   position: relative;
 `
 
-const StyledBg = styled.div`
+const StyledBg = styled(BackgroundImage)`
   width: 100%;
   height: 100%;
   background-position: center;
   background-size: cover;
-  background-image: url(${({ image }) => image});
+  /* background-image: url(${({ image }) => image}); */
   position: relative;
 
-  &::after {
+  /* &::after {
     content: "";
     width: 100%;
     height: 100%;
@@ -83,7 +84,7 @@ const StyledBg = styled.div`
 
   &:hover::after {
     opacity: 0.75;
-  }
+  } */
 `
 
 const StyledDivider = styled.div`
@@ -134,7 +135,7 @@ const StyledButton = styled(Button)`
 const Article = ({ slug, image, title, description, date, type }) => (
   <StyledWrapper type={type}>
     <StyledImage as={Link} to={`/aktualnosci/${slug}`}>
-      <StyledBg image={image} />
+      <StyledBg image={image} fluid={image} />
       {type !== "small" && <StyledDivider />}
     </StyledImage>
     <StyledContainer>

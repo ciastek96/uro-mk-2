@@ -24,7 +24,7 @@ const BlogPostTemplate = ({ data }) => (
     <SEO title={data.post.title} />
     <Article
       type="big"
-      image={data.post.background.asset.fluid.src}
+      image={data.post.background.asset.fluid}
       title={data.post.title}
       date={data.post._updatedAt}
       description={data.post.content2}
@@ -54,8 +54,8 @@ export const query = graphql`
       _updatedAt(locale: "PL", formatString: "D MMMM YYYY")
       background {
         asset {
-          fluid {
-            src
+          fluid(maxWidth: 2560) {
+            ...GatsbySanityImageFluid
           }
         }
       }

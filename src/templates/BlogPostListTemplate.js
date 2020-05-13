@@ -29,7 +29,7 @@ const BlogPostListTemplate = ({ data, pageContext }) => {
             type="normal"
             slug={item.slug.current}
             key={item._id}
-            image={item.background.asset.fluid.src}
+            image={item.background.asset.fluid}
             title={item.title}
             date={item._updatedAt}
             description={item.content2}
@@ -52,7 +52,11 @@ const BlogPostListTemplate = ({ data, pageContext }) => {
 
 export const query = graphql`
   query FetchPost($skip: Int!, $limit: Int!) {
-    allSanityPost(limit: $limit, skip: $skip, sort: { fields: _updatedAt }) {
+    allSanityPost(
+      limit: $limit
+      skip: $skip
+      sort: { fields: _updatedAt, order: DESC }
+    ) {
       nodes {
         title
         content2
@@ -64,7 +68,7 @@ export const query = graphql`
         background {
           asset {
             fluid(maxWidth: 600) {
-              src
+              ...GatsbySanityImageFluid
             }
           }
         }
