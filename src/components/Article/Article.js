@@ -66,28 +66,11 @@ const StyledBg = styled(BackgroundImage)`
   height: 100%;
   position: relative;
   filter: opacity(1);
-
   transition: all 0.25s ease-in-out;
 
   :hover {
     filter: opacity(0.3);
   }
-
-  /* &::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: ${({ theme }) => theme.blue};
-    opacity: 0;
-    transition: all 0.25s ease-in-out;
-  }
-
-  &:hover::after {
-    opacity: 0.75;
-  } */
 `
 
 const StyledDivider = styled.div`
