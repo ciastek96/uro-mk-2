@@ -24,6 +24,7 @@ const BlogPostTemplate = ({ data }) => (
     <SEO title={data.post.title} />
     <Article
       type="big"
+      slug={data.post.slug.current}
       image={data.post.background.asset.fluid}
       title={data.post.title}
       date={data.post._updatedAt}

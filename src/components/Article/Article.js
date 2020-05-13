@@ -57,18 +57,21 @@ const StyledWrapper = styled.div`
 const StyledImage = styled.div`
   width: 100%;
   height: 100%;
-  background-position: center;
-  background-size: cover;
   position: relative;
+  background-color: ${({ theme }) => theme.blue};
 `
 
 const StyledBg = styled(BackgroundImage)`
   width: 100%;
   height: 100%;
-  background-position: center;
-  background-size: cover;
-  /* background-image: url(${({ image }) => image}); */
   position: relative;
+  filter: opacity(1);
+
+  transition: all 0.25s ease-in-out;
+
+  :hover {
+    filter: opacity(0.3);
+  }
 
   /* &::after {
     content: "";
@@ -135,7 +138,7 @@ const StyledButton = styled(Button)`
 const Article = ({ slug, image, title, description, date, type }) => (
   <StyledWrapper type={type}>
     <StyledImage as={Link} to={`/aktualnosci/${slug}`}>
-      <StyledBg image={image} fluid={image} />
+      <StyledBg fluid={image} />
       {type !== "small" && <StyledDivider />}
     </StyledImage>
     <StyledContainer>
