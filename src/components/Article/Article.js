@@ -68,7 +68,7 @@ const StyledBg = styled(BackgroundImage)`
   filter: opacity(1);
   transition: all 0.25s ease-in-out;
 
-  :hover {
+  &:hover {
     filter: opacity(0.3);
   }
 `
